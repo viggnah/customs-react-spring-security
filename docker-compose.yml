@@ -1,0 +1,74 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_DB: ${DB_NAME:-tra_customs}
+      POSTGRES_USER: ${DB_USER:-tra_user}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-tra_password}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - tra-network
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    environment:
+      SPRING_PROFILES_ACTIVE: ${SPRING_PROFILE:-staging}
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: ${DB_NAME:-tra_customs}
+      DB_USER: ${DB_USER:-tra_user}
+      DB_PASSWORD: ${DB_PASSWORD:-tra_password}
+      JWT_SECRET: ${JWT_SECRET:-tra-customs-jwt-secret-key-2024}
+      MAIL_HOST: ${MAIL_HOST:-smtp.gmail.com}
+      MAIL_PORT: ${MAIL_PORT:-587}
+      MAIL_USERNAME: ${MAIL_USERNAME:-noreply@tra.gov}
+      MAIL_PASSWORD: ${MAIL_PASSWORD:-mail_password}
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    networks:
+      - tra-network
+    volumes:
+      - ./backend/logs:/app/logs
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    networks:
+      - tra-network
+    environment:
+      REACT_APP_API_BASE_URL: http://localhost:8080/api
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./docker/nginx/ssl:/etc/nginx/ssl
+    depends_on:
+      - frontend
+      - backend
+    networks:
+      - tra-network
+
+volumes:
+  postgres_data:
+
+networks:
+  tra-network:
+    driver: bridge
