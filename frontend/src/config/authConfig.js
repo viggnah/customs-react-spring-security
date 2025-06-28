@@ -28,13 +28,13 @@ const authConfig = {
   enablePKCE: true,
   
   // Session management
-  checkSessionInterval: 3000,
+//   checkSessionInterval: 3000,
   
   // Custom claims mapping for TRA roles
-  customClaimsMapping: {
-    roles: "groups", // Map WSO2 IS groups to roles
-    authorities: "roles" // Map WSO2 IS roles to authorities
-  }
+//   customClaimsMapping: {
+//     roles: "groups", // Map WSO2 IS groups to roles
+//     authorities: "roles" // Map WSO2 IS roles to authorities
+//   }
 };
 
 export default authConfig;
