@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import cargoService from '../services/cargoService';
-import { useAuth } from '../context/AuthContext';
+import { useCargoService } from '../services/wso2CargoService';
+import { useAuth } from '../context/WSO2AuthContext';
 import './CargoManagement.css';
 
 const CargoManagement = () => {
   const { hasAuthority } = useAuth();
+  const { getAllCargo, createCargo, updateStatus } = useCargoService();
   const [cargoData, setCargoData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -28,7 +29,7 @@ const CargoManagement = () => {
     setError('');
     
     try {
-      const data = await cargoService.getAllCargo(
+      const data = await getAllCargo(
         currentPage,
         10,
         'createdAt',
@@ -41,7 +42,7 @@ const CargoManagement = () => {
     } finally {
       setLoading(false);
     }
-  }, [currentPage, statusFilter]);
+  }, [currentPage, statusFilter, getAllCargo]);
 
   useEffect(() => {
     loadCargo();
@@ -53,7 +54,7 @@ const CargoManagement = () => {
     setError('');
 
     try {
-      await cargoService.createCargo(newCargo);
+      await createCargo(newCargo);
       setShowCreateModal(false);
       setNewCargo({
         cargoId: '',
@@ -75,7 +76,7 @@ const CargoManagement = () => {
 
   const handleStatusUpdate = async (cargoId, newStatus) => {
     try {
-      await cargoService.updateStatus(cargoId, newStatus);
+      await updateStatus(cargoId, newStatus);
       loadCargo();
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to update status');

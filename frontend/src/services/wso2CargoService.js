@@ -6,9 +6,13 @@ const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:808
 export const useCargoService = () => {
   const api = useAuthenticatedAPI();
 
-  const getAllCargo = async () => {
+  const getAllCargo = async (page = 0, size = 10, sortBy = 'createdAt', sortDir = 'desc', status = undefined) => {
     try {
-      const response = await api.get(`${API_BASE_URL}/cargo`);
+      let url = `${API_BASE_URL}/cargo?page=${page}&size=${size}&sortBy=${sortBy}&sortDir=${sortDir}`;
+      if (status) {
+        url += `&status=${status}`;
+      }
+      const response = await api.get(url);
       return await response.json();
     } catch (error) {
       console.error('Error fetching cargo:', error);

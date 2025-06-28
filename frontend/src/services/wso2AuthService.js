@@ -80,6 +80,9 @@ export const useAuthenticatedAPI = () => {
         throw new Error('No access token available');
       }
 
+      console.log('Making authenticated request to:', url);
+      console.log('Using access token (first 50 chars):', accessToken.substring(0, 50) + '...');
+
       const headers = {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${accessToken}`,

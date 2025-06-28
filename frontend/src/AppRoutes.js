@@ -9,10 +9,33 @@ import DashboardPage from './pages/DashboardPage';
 import CargoPage from './pages/CargoPage';
 import VehiclePage from './pages/VehiclePage';
 import AdminPage from './pages/AdminPage';
+import AuthCallback from './components/AuthCallback';
 
 // Protected Route Component
 const ProtectedRoute = ({ children, requiredRoles = [] }) => {
-  const { isAuthenticated, user } = useAuth();
+  const { isAuthenticated, user, loading, authChecked } = useAuth();
+
+  // Show loading while checking authentication
+  if (loading || !authChecked) {
+    return (
+      <div style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100vh',
+        backgroundColor: 'var(--tra-blue)'
+      }}>
+        <div style={{
+          color: 'var(--tra-white)',
+          fontSize: 'var(--font-size-large)',
+          textAlign: 'center'
+        }}>
+          <div style={{ marginBottom: 'var(--spacing-lg)' }}>🔄</div>
+          <div>Authenticating...</div>
+        </div>
+      </div>
+    );
+  }
 
   if (!isAuthenticated) {
     return <Navigate to="/login" replace />;
@@ -33,10 +56,35 @@ const ProtectedRoute = ({ children, requiredRoles = [] }) => {
 };
 
 const AppRoutes = () => {
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, loading, authChecked } = useAuth();
+
+  // Show loading while initializing authentication
+  if (loading || !authChecked) {
+    return (
+      <div style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100vh',
+        backgroundColor: 'var(--tra-blue)'
+      }}>
+        <div style={{
+          color: 'var(--tra-white)',
+          fontSize: 'var(--font-size-large)',
+          textAlign: 'center'
+        }}>
+          <div style={{ marginBottom: 'var(--spacing-lg)' }}>🔄</div>
+          <div>Loading...</div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <Routes>
+      {/* OAuth2 Callback Route */}
+      <Route path="/auth/callback" element={<AuthCallback />} />
+      
       {/* Public Routes */}
       <Route 
         path="/login" 

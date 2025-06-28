@@ -8,7 +8,9 @@ const authConfig = {
   
   // OAuth2 Client Configuration
   clientID: process.env.REACT_APP_WSO2_CLIENT_ID || "YOUR_CLIENT_ID_HERE",
-  
+
+  clientSecret: process.env.REACT_APP_WSO2_CLIENT_SECRET || "YOUR_CLIENT_SECRET_HERE",
+
   // The URL to redirect to after login
   // This should be registered in your WSO2 IS application
   signInRedirectURL: process.env.REACT_APP_WSO2_SIGNIN_REDIRECT_URL || "http://localhost:3000",
@@ -17,7 +19,7 @@ const authConfig = {
   signOutRedirectURL: process.env.REACT_APP_WSO2_SIGNOUT_REDIRECT_URL || "http://localhost:3000",
   
   // OAuth2/OIDC scopes
-  scope: ["openid", "profile", "email"],
+  scope: ["openid", "profile", "email", "roles", "groups"],
   
   // Resource endpoints
   resourceServerURLs: [

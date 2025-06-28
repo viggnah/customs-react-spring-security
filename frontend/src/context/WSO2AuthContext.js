@@ -31,14 +31,21 @@ const AuthProviderWrapper = ({ children }) => {
 
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [authChecked, setAuthChecked] = useState(false);
 
   useEffect(() => {
     const initializeAuth = async () => {
       try {
+        setLoading(true);
+        console.log('Initializing auth, asgardeoIsAuthenticated:', asgardeoIsAuthenticated);
+        
         if (asgardeoIsAuthenticated) {
           // Get user info from WSO2 IS
           const basicUserInfo = await getBasicUserInfo();
           const decodedToken = await getDecodedIDToken();
+          
+          console.log('Basic user info:', basicUserInfo);
+          console.log('Decoded token:', decodedToken);
           
           // Map WSO2 IS user data to TRA user format
           const userData = {
@@ -53,8 +60,10 @@ const AuthProviderWrapper = ({ children }) => {
             claims: decodedToken
           };
           
+          console.log('Setting user data:', userData);
           setUser(userData);
         } else {
+          console.log('Not authenticated, clearing user');
           setUser(null);
         }
       } catch (error) {
@@ -62,9 +71,11 @@ const AuthProviderWrapper = ({ children }) => {
         setUser(null);
       } finally {
         setLoading(false);
+        setAuthChecked(true);
       }
     };
 
+    // Only initialize when Asgardeo SDK is not loading
     if (!isLoading) {
       initializeAuth();
     }
@@ -72,6 +83,7 @@ const AuthProviderWrapper = ({ children }) => {
 
   // Map WSO2 IS groups to TRA roles
   const mapGroupsToRoles = (groups) => {
+    console.log('Mapping groups to roles:', groups);
     const roleMapping = {
       'admin': 'ADMIN',
       'customs_officer': 'CUSTOMS_OFFICER',
@@ -81,26 +93,37 @@ const AuthProviderWrapper = ({ children }) => {
       // Add more mappings as needed
     };
 
-    return groups.map(group => roleMapping[group.toLowerCase()] || group).filter(Boolean);
+    const mappedRoles = groups.map(group => roleMapping[group.toLowerCase()] || group).filter(Boolean);
+    console.log('Mapped roles:', mappedRoles);
+    
+    // If no roles found, assign a default role
+    if (mappedRoles.length === 0) {
+      mappedRoles.push('CUSTOMS_OFFICER'); // Default role
+    }
+    
+    return mappedRoles;
   };
 
   // Map roles to authorities
   const mapRolesToAuthorities = (roles) => {
+    console.log('Mapping roles to authorities:', roles);
     const authorityMapping = {
-      'ADMIN': ['READ', 'WRITE', 'DELETE', 'MANAGE_USERS', 'VIEW_REPORTS'],
-      'CUSTOMS_OFFICER': ['READ', 'WRITE', 'PROCESS_CLEARANCE', 'VIEW_REPORTS'],
-      'CARGO_INSPECTOR': ['READ', 'WRITE', 'INSPECT_CARGO'],
-      'VEHICLE_INSPECTOR': ['READ', 'WRITE', 'INSPECT_VEHICLE'],
-      'DUTY_OFFICER': ['READ', 'WRITE', 'CALCULATE_DUTY', 'PROCESS_PAYMENT']
+      'admin': ['READ', 'WRITE', 'DELETE', 'MANAGE_USERS', 'VIEW_REPORTS'],
+      'customs_officer': ['READ', 'WRITE', 'PROCESS_CLEARANCE', 'VIEW_REPORTS'],
+      'cargo_inspector': ['READ', 'WRITE', 'INSPECT_CARGO'],
+      'vehicle_inspector': ['READ', 'WRITE', 'INSPECT_VEHICLE'],
+      'duty_officer': ['READ', 'WRITE', 'CALCULATE_DUTY', 'PROCESS_PAYMENT']
     };
 
     const authorities = new Set();
     roles.forEach(role => {
-      const roleAuthorities = authorityMapping[role] || [];
+      const roleAuthorities = authorityMapping[role] || ['READ']; // Default to READ access
       roleAuthorities.forEach(auth => authorities.add(auth));
     });
 
-    return Array.from(authorities);
+    const mappedAuthorities = Array.from(authorities);
+    console.log('Mapped authorities:', mappedAuthorities);
+    return mappedAuthorities;
   };
 
   const login = async () => {
@@ -154,6 +177,7 @@ const AuthProviderWrapper = ({ children }) => {
   const value = {
     user,
     loading: loading || isLoading,
+    authChecked,
     login,
     logout,
     isAuthenticated,

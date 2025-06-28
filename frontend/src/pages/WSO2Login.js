@@ -3,7 +3,7 @@ import { Navigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/WSO2AuthContext';
 
 const WSO2Login = () => {
-  const { isAuthenticated, loading, login, user } = useAuth();
+  const { isAuthenticated, loading, login, user, authChecked } = useAuth();
   const [loginError, setLoginError] = useState('');
   const [isLoggingIn, setIsLoggingIn] = useState(false);
   const location = useLocation();
@@ -12,11 +12,8 @@ const WSO2Login = () => {
   const from = location.state?.from?.pathname || '/dashboard';
 
   useEffect(() => {
-    // If already authenticated, redirect to intended destination
-    if (isAuthenticated && user) {
-      // Redirect will be handled by the Navigate component below
-    }
-  }, [isAuthenticated, user]);
+    console.log('WSO2Login - Auth state:', { isAuthenticated, loading, user, authChecked });
+  }, [isAuthenticated, loading, user, authChecked]);
 
   const handleLogin = async () => {
     try {
@@ -32,7 +29,7 @@ const WSO2Login = () => {
   };
 
   // Show loading spinner while checking authentication status
-  if (loading) {
+  if (loading || !authChecked) {
     return (
       <div style={{
         display: 'flex',
@@ -55,6 +52,7 @@ const WSO2Login = () => {
 
   // If authenticated, redirect to intended destination
   if (isAuthenticated && user) {
+    console.log('Redirecting to:', from);
     return <Navigate to={from} replace />;
   }
 
