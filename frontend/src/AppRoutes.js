@@ -1,9 +1,10 @@
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { useAuth } from './context/AuthContext';
+import { useAuth } from './context/WSO2AuthContext';
 
-// Import pages (we'll create these)
-import LoginPage from './pages/LoginPage';
+// Import pages
+import WSO2Login from './pages/WSO2Login';
+import LoginPage from './pages/LoginPage'; // Keep old login as fallback
 import DashboardPage from './pages/DashboardPage';
 import CargoPage from './pages/CargoPage';
 import VehiclePage from './pages/VehiclePage';
@@ -39,6 +40,16 @@ const AppRoutes = () => {
       {/* Public Routes */}
       <Route 
         path="/login" 
+        element={
+          isAuthenticated ? 
+            <Navigate to="/dashboard" replace /> : 
+            <WSO2Login />
+        } 
+      />
+      
+      {/* Legacy login route */}
+      <Route 
+        path="/legacy-login" 
         element={
           isAuthenticated ? 
             <Navigate to="/dashboard" replace /> : 
