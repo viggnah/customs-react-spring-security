@@ -265,7 +265,7 @@ public class WSO2SecurityConfig {
      */
     private Collection<String> mapGroupToAuthorities(String group) {
         Map<String, List<String>> groupToAuthorities = Map.of(
-            "admin", List.of("ROLE_ADMIN", "READ", "WRITE", "DELETE", "MANAGE_USERS", "VIEW_REPORTS", "READ_CARGO"),
+            "admin", List.of("ROLE_ADMIN", "READ", "WRITE", "DELETE", "MANAGE_USERS", "VIEW_REPORTS", "READ_CARGO", "CREATE_CARGO", "CREATE_VEHICLE", "INSPECT_VEHICLE", "READ_DUTY", "CREATE_DUTY", "CALCULATE_DUTY", "PROCESS_PAYMENT"),
             "customs_officer", List.of("ROLE_CUSTOMS_OFFICER", "READ", "WRITE", "PROCESS_CLEARANCE", "VIEW_REPORTS"),
             "cargo_inspector", List.of("ROLE_CARGO_INSPECTOR", "READ_CARGO", "CREATE_CARGO", "INSPECT_CARGO"),
             "vehicle_inspector", List.of("ROLE_VEHICLE_INSPECTOR", "READ_VEHICLE", "CREATE_VEHICLE", "INSPECT_VEHICLE"),

@@ -108,14 +108,23 @@ const AuthProviderWrapper = ({ children }) => {
   const mapRolesToAuthorities = (roles) => {
     console.log('Mapping roles to authorities:', roles);
     const authorityMapping = {
-      'admin': ['READ', 'WRITE', 'DELETE', 'MANAGE_USERS', 'VIEW_REPORTS', 'READ_CARGO'],
+      'admin': ['READ', 'WRITE', 'DELETE', 'MANAGE_USERS', 'VIEW_REPORTS', 'READ_CARGO', 'CREATE_CARGO', 'CREATE_VEHICLE', 'INSPECT_VEHICLE', 'READ_DUTY', 'CREATE_DUTY', 'CALCULATE_DUTY', 'PROCESS_PAYMENT'],
       'customs_officer': ['READ', 'WRITE', 'PROCESS_CLEARANCE', 'VIEW_REPORTS'],
       'cargo_inspector': ['READ_CARGO', 'CREATE_CARGO', 'INSPECT_CARGO'],
       'vehicle_inspector': ['READ_VEHICLE', 'CREATE_VEHICLE', 'INSPECT_VEHICLE'],
       'duty_officer': ['READ_DUTY', 'CREATE_DUTY', 'CALCULATE_DUTY', 'PROCESS_PAYMENT']
     };
 
-    const arrayRoles = roles.split(',').map(role => role.trim().toLowerCase());
+    // Handle both array and string inputs
+    let arrayRoles = [];
+    if (Array.isArray(roles)) {
+      arrayRoles = roles.map(role => role.trim().toLowerCase());
+    } else if (typeof roles === 'string') {
+      arrayRoles = roles.split(',').map(role => role.trim().toLowerCase());
+    } else {
+      console.warn('Roles is neither array nor string:', roles);
+      arrayRoles = [];
+    }
     console.log('Array roles:', arrayRoles);
     const authorities = arrayRoles.map(role => authorityMapping[role.toLowerCase()] || ['READ']); // Default to READ access
     const uniqueAuthorities = new Set();

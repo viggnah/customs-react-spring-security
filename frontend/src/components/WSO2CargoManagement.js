@@ -3,7 +3,7 @@ import { useCargoService } from '../services/wso2CargoService';
 import { useAuth } from '../context/WSO2AuthContext';
 
 const WSO2CargoManagement = () => {
-  const { hasAuthority, isAuthenticated } = useAuth();
+  const { hasAuthority, isAuthenticated, user } = useAuth();
   const cargoService = useCargoService();
   
   const [cargoData, setCargoData] = useState([]);
@@ -50,7 +50,7 @@ const WSO2CargoManagement = () => {
 
   const handleCreateCargo = async (e) => {
     e.preventDefault();
-    if (!hasAuthority('WRITE_CARGO')) {
+    if (!hasAuthority('CREATE_CARGO')) {
       setError('You do not have permission to create cargo entries');
       return;
     }
@@ -80,7 +80,7 @@ const WSO2CargoManagement = () => {
   };
 
   const handleStatusChange = async (cargoId, newStatus) => {
-    if (!hasAuthority('WRITE_CARGO')) {
+    if (!hasAuthority('CREATE_CARGO')) {
       setError('You do not have permission to update cargo status');
       return;
     }
@@ -128,7 +128,7 @@ const WSO2CargoManagement = () => {
         marginBottom: 'var(--spacing-lg)'
       }}>
         <h2 style={{ margin: 0 }}>WSO2 Cargo Management</h2>
-        {hasAuthority('WRITE') && (
+        {hasAuthority('CREATE_CARGO') && (
           <button
             onClick={() => setShowCreateModal(true)}
             style={{
@@ -227,7 +227,7 @@ const WSO2CargoManagement = () => {
                     </span>
                   </td>
                   <td style={{ padding: 'var(--spacing-md)' }}>
-                    {hasAuthority('WRITE') && (
+                    {hasAuthority('CREATE_CARGO') && (
                       <button
                         onClick={() => handleStatusChange(cargo.id, 'CLEARED')}
                         disabled={cargo.status === 'CLEARED'}
@@ -278,7 +278,7 @@ const WSO2CargoManagement = () => {
           boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
         }}>
           <p style={{ margin: 0, color: 'var(--tra-gray)' }}>
-            No cargo entries found. {hasAuthority('WRITE') && 'Create one to get started.'}
+            No cargo entries found. {hasAuthority('CREATE_CARGO') && 'Create one to get started.'}
           </p>
         </div>
       )}
