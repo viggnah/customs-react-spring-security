@@ -18,7 +18,6 @@ tra-customs-spring/
 - Spring Security with database authentication
 - JWT token-based authentication
 - Role-based access control (RBAC)
-- Password reset functionality
 
 ### Customs Operations
 - **Cargo Clearance**: Manage cargo inspection and clearance processes
@@ -41,7 +40,7 @@ tra-customs-spring/
 - Spring Data JPA
 - JWT Authentication
 - Maven
-- H2/PostgreSQL Database
+- H2 Database
 
 ### Frontend
 - React 18.x
@@ -49,11 +48,6 @@ tra-customs-spring/
 - Axios
 - CSS Modules
 - Modern JavaScript (ES6+)
-
-## 🎨 Design Theme
-- **Primary Colors**: Bright Yellow (#FFD700) and Black (#000000)
-- **Typography**: Professional and accessible
-- **UI/UX**: Modern, responsive design optimized for government operations
 
 ## 🚀 Quick Start
 
@@ -97,19 +91,11 @@ The application supports multiple environments through Spring profiles:
 API documentation is available at: `http://localhost:8080/swagger-ui.html`
 
 ## 🐳 Docker Support
-
+(TODO: Add Docker support for easy deployment)
 ```bash
 # Build and run with Docker Compose
 docker-compose up --build
 ```
-
-## 🔐 Security Features
-
-- Password encryption using BCrypt
-- JWT token expiration and refresh
-- CORS configuration for frontend integration
-- SQL injection prevention
-- XSS protection headers
 
 ## 📁 Project Structure
 
@@ -138,18 +124,3 @@ frontend/src/
 ├── utils/          # Utility functions
 └── styles/         # CSS files
 ```
-
-## 🤝 Contributing
-
-1. Create a feature branch
-2. Make your changes
-3. Run tests
-4. Submit a pull request
-
-## 📄 License
-
-This project is licensed under the MIT License.
-
-## 🆘 Support
-
-For support and questions, please contact the development team.
