@@ -1,4 +1,5 @@
 import { useAuthenticatedAPI } from './wso2AuthService';
+import { useMemo } from 'react';
 
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:8080/api';
 
@@ -6,89 +7,81 @@ const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:808
 export const useCargoService = () => {
   const api = useAuthenticatedAPI();
 
-  const getAllCargo = async (page = 0, size = 10, sortBy = 'createdAt', sortDir = 'desc', status = undefined) => {
-    try {
-      let url = `${API_BASE_URL}/cargo?page=${page}&size=${size}&sortBy=${sortBy}&sortDir=${sortDir}`;
-      if (status) {
-        url += `&status=${status}`;
+  return useMemo(() => ({
+    getAllCargo: async (page = 0, size = 10, sortBy = 'createdAt', sortDir = 'desc', status = undefined) => {
+      try {
+        let url = `${API_BASE_URL}/cargo?page=${page}&size=${size}&sortBy=${sortBy}&sortDir=${sortDir}`;
+        if (status) {
+          url += `&status=${status}`;
+        }
+        const response = await api.get(url);
+        return await response.json();
+      } catch (error) {
+        console.error('Error fetching cargo:', error);
+        throw error;
       }
-      const response = await api.get(url);
-      return await response.json();
-    } catch (error) {
-      console.error('Error fetching cargo:', error);
-      throw error;
-    }
-  };
+    },
 
-  const getCargoById = async (id) => {
-    try {
-      const response = await api.get(`${API_BASE_URL}/cargo/${id}`);
-      return await response.json();
-    } catch (error) {
-      console.error('Error fetching cargo by ID:', error);
-      throw error;
-    }
-  };
+    getCargoById: async (id) => {
+      try {
+        const response = await api.get(`${API_BASE_URL}/cargo/${id}`);
+        return await response.json();
+      } catch (error) {
+        console.error('Error fetching cargo by ID:', error);
+        throw error;
+      }
+    },
 
-  const createCargo = async (cargoData) => {
-    try {
-      const response = await api.post(`${API_BASE_URL}/cargo`, cargoData);
-      return await response.json();
-    } catch (error) {
-      console.error('Error creating cargo:', error);
-      throw error;
-    }
-  };
+    createCargo: async (cargoData) => {
+      try {
+        const response = await api.post(`${API_BASE_URL}/cargo`, cargoData);
+        return await response.json();
+      } catch (error) {
+        console.error('Error creating cargo:', error);
+        throw error;
+      }
+    },
 
-  const updateCargo = async (id, cargoData) => {
-    try {
-      const response = await api.put(`${API_BASE_URL}/cargo/${id}`, cargoData);
-      return await response.json();
-    } catch (error) {
-      console.error('Error updating cargo:', error);
-      throw error;
-    }
-  };
+    updateCargo: async (id, cargoData) => {
+      try {
+        const response = await api.put(`${API_BASE_URL}/cargo/${id}`, cargoData);
+        return await response.json();
+      } catch (error) {
+        console.error('Error updating cargo:', error);
+        throw error;
+      }
+    },
 
-  const deleteCargo = async (id) => {
-    try {
-      await api.delete(`${API_BASE_URL}/cargo/${id}`);
-    } catch (error) {
-      console.error('Error deleting cargo:', error);
-      throw error;
-    }
-  };
+    deleteCargo: async (id) => {
+      try {
+        await api.delete(`${API_BASE_URL}/cargo/${id}`);
+      } catch (error) {
+        console.error('Error deleting cargo:', error);
+        throw error;
+      }
+    },
 
-  const updateCargoStatus = async (id, status) => {
-    try {
-      const response = await api.put(`${API_BASE_URL}/cargo/${id}/status`, { status });
-      return await response.json();
-    } catch (error) {
-      console.error('Error updating cargo status:', error);
-      throw error;
-    }
-  };
+    updateCargoStatus: async (id, status) => {
+      try {
+        const response = await api.put(`${API_BASE_URL}/cargo/${id}/status`, { status });
+        return await response.json();
+      } catch (error) {
+        console.error('Error updating cargo status:', error);
+        throw error;
+      }
+    },
 
-  const searchCargo = async (searchParams) => {
-    try {
-      const queryString = new URLSearchParams(searchParams).toString();
-      const response = await api.get(`${API_BASE_URL}/cargo/search?${queryString}`);
-      return await response.json();
-    } catch (error) {
-      console.error('Error searching cargo:', error);
-      throw error;
+    searchCargo: async (searchParams) => {
+      try {
+        const queryString = new URLSearchParams(searchParams).toString();
+        const response = await api.get(`${API_BASE_URL}/cargo/search?${queryString}`);
+        return await response.json();
+      } catch (error) {
+        console.error('Error searching cargo:', error);
+        throw error;
+      }
     }
-  };
-
-  return {
-    getAllCargo,
-    getCargoById,
-    createCargo,
-    updateCargo,
-    deleteCargo,
-    updateCargoStatus,
-    searchCargo
-  };
+  }), [api]);
 };
 
 // Legacy class for backward compatibility during transition

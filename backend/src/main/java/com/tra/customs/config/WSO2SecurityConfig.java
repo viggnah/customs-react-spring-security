@@ -265,11 +265,11 @@ public class WSO2SecurityConfig {
      */
     private Collection<String> mapGroupToAuthorities(String group) {
         Map<String, List<String>> groupToAuthorities = Map.of(
-            "admin", List.of("ROLE_ADMIN", "READ", "WRITE", "DELETE", "MANAGE_USERS", "VIEW_REPORTS"),
+            "admin", List.of("ROLE_ADMIN", "READ", "WRITE", "DELETE", "MANAGE_USERS", "VIEW_REPORTS", "READ_CARGO"),
             "customs_officer", List.of("ROLE_CUSTOMS_OFFICER", "READ", "WRITE", "PROCESS_CLEARANCE", "VIEW_REPORTS"),
-            "cargo_inspector", List.of("ROLE_CARGO_INSPECTOR", "READ", "WRITE", "INSPECT_CARGO"),
-            "vehicle_inspector", List.of("ROLE_VEHICLE_INSPECTOR", "READ", "WRITE", "INSPECT_VEHICLE"),
-            "duty_officer", List.of("ROLE_DUTY_OFFICER", "READ", "WRITE", "CALCULATE_DUTY", "PROCESS_PAYMENT")
+            "cargo_inspector", List.of("ROLE_CARGO_INSPECTOR", "READ_CARGO", "CREATE_CARGO", "INSPECT_CARGO"),
+            "vehicle_inspector", List.of("ROLE_VEHICLE_INSPECTOR", "READ_VEHICLE", "CREATE_VEHICLE", "INSPECT_VEHICLE"),
+            "duty_officer", List.of("ROLE_DUTY_OFFICER", "READ_DUTY", "CREATE_DUTY", "CALCULATE_DUTY", "PROCESS_PAYMENT")
         );
         
         return groupToAuthorities.getOrDefault(group.toLowerCase(), Collections.emptyList());
@@ -280,7 +280,7 @@ public class WSO2SecurityConfig {
      */
     private Collection<String> mapRoleToAuthorities(String role) {
         Map<String, List<String>> roleToAuthorities = Map.of(
-            "admin", List.of("ROLE_ADMIN", "READ", "WRITE", "DELETE", "MANAGE_USERS", "VIEW_REPORTS"),
+            "admin", List.of("ROLE_ADMIN", "READ", "WRITE", "DELETE", "MANAGE_USERS", "VIEW_REPORTS", "READ_CARGO"),
             "customs_officer", List.of("ROLE_CUSTOMS_OFFICER", "READ", "WRITE", "PROCESS_CLEARANCE", "VIEW_REPORTS"),
             "cargo_inspector", List.of("ROLE_CARGO_INSPECTOR", "READ", "WRITE", "INSPECT_CARGO"),
             "vehicle_inspector", List.of("ROLE_VEHICLE_INSPECTOR", "READ", "WRITE", "INSPECT_VEHICLE"),

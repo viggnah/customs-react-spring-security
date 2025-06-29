@@ -108,20 +108,21 @@ const AuthProviderWrapper = ({ children }) => {
   const mapRolesToAuthorities = (roles) => {
     console.log('Mapping roles to authorities:', roles);
     const authorityMapping = {
-      'admin': ['READ', 'WRITE', 'DELETE', 'MANAGE_USERS', 'VIEW_REPORTS'],
+      'admin': ['READ', 'WRITE', 'DELETE', 'MANAGE_USERS', 'VIEW_REPORTS', 'READ_CARGO'],
       'customs_officer': ['READ', 'WRITE', 'PROCESS_CLEARANCE', 'VIEW_REPORTS'],
-      'cargo_inspector': ['READ', 'WRITE', 'INSPECT_CARGO'],
-      'vehicle_inspector': ['READ', 'WRITE', 'INSPECT_VEHICLE'],
-      'duty_officer': ['READ', 'WRITE', 'CALCULATE_DUTY', 'PROCESS_PAYMENT']
+      'cargo_inspector': ['READ_CARGO', 'CREATE_CARGO', 'INSPECT_CARGO'],
+      'vehicle_inspector': ['READ_VEHICLE', 'CREATE_VEHICLE', 'INSPECT_VEHICLE'],
+      'duty_officer': ['READ_DUTY', 'CREATE_DUTY', 'CALCULATE_DUTY', 'PROCESS_PAYMENT']
     };
 
-    const authorities = new Set();
-    roles.forEach(role => {
-      const roleAuthorities = authorityMapping[role] || ['READ']; // Default to READ access
-      roleAuthorities.forEach(auth => authorities.add(auth));
+    const arrayRoles = roles.split(',').map(role => role.trim().toLowerCase());
+    console.log('Array roles:', arrayRoles);
+    const authorities = arrayRoles.map(role => authorityMapping[role.toLowerCase()] || ['READ']); // Default to READ access
+    const uniqueAuthorities = new Set();
+    authorities.forEach(authList => {
+      authList.forEach(auth => uniqueAuthorities.add(auth));
     });
-
-    const mappedAuthorities = Array.from(authorities);
+    const mappedAuthorities = Array.from(uniqueAuthorities);
     console.log('Mapped authorities:', mappedAuthorities);
     return mappedAuthorities;
   };

@@ -1,4 +1,5 @@
 import { useAuth } from '../context/WSO2AuthContext';
+import { useMemo } from 'react';
 
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:8080/api';
 
@@ -71,78 +72,80 @@ class WSO2AuthService {
 export const useAuthenticatedAPI = () => {
   const { getToken, refreshToken, logout } = useAuth();
 
-  const makeRequest = async (url, options = {}) => {
-    try {
-      // Get current access token
-      let accessToken = await getToken();
-      
-      if (!accessToken) {
-        throw new Error('No access token available');
-      }
-
-      console.log('Making authenticated request to:', url);
-      console.log('Using access token (first 50 chars):', accessToken.substring(0, 50) + '...');
-
-      const headers = {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${accessToken}`,
-        ...options.headers
-      };
-
-      let response = await fetch(url, {
-        ...options,
-        headers
-      });
-
-      // If token expired, try to refresh
-      if (response.status === 401) {
-        try {
-          await refreshToken();
-          accessToken = await getToken();
-          
-          // Retry with new token
-          response = await fetch(url, {
-            ...options,
-            headers: {
-              ...headers,
-              'Authorization': `Bearer ${accessToken}`
-            }
-          });
-        } catch (refreshError) {
-          // Refresh failed, logout user
-          console.error('Token refresh failed:', refreshError);
-          await logout();
-          throw new Error('Session expired. Please login again.');
+  return useMemo(() => {
+    const makeRequest = async (url, options = {}) => {
+      try {
+        // Get current access token
+        let accessToken = await getToken();
+        
+        if (!accessToken) {
+          throw new Error('No access token available');
         }
+
+        console.log('Making authenticated request to:', url);
+        console.log('Using access token (first 50 chars):', accessToken.substring(0, 50) + '...');
+
+        const headers = {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${accessToken}`,
+          ...options.headers
+        };
+
+        let response = await fetch(url, {
+          ...options,
+          headers
+        });
+
+        // If token expired, try to refresh
+        if (response.status === 401) {
+          try {
+            await refreshToken();
+            accessToken = await getToken();
+            
+            // Retry with new token
+            response = await fetch(url, {
+              ...options,
+              headers: {
+                ...headers,
+                'Authorization': `Bearer ${accessToken}`
+              }
+            });
+          } catch (refreshError) {
+            // Refresh failed, logout user
+            console.error('Token refresh failed:', refreshError);
+            await logout();
+            throw new Error('Session expired. Please login again.');
+          }
+        }
+
+        if (!response.ok) {
+          const error = await response.json().catch(() => ({}));
+          throw new Error(error.message || `Request failed: ${response.status}`);
+        }
+
+        return response;
+      } catch (error) {
+        console.error('API request error:', error);
+        throw error;
       }
+    };
 
-      if (!response.ok) {
-        const error = await response.json().catch(() => ({}));
-        throw new Error(error.message || `Request failed: ${response.status}`);
-      }
-
-      return response;
-    } catch (error) {
-      console.error('API request error:', error);
-      throw error;
-    }
-  };
-
-  return {
-    makeRequest,
-    get: (url, options) => makeRequest(url, { ...options, method: 'GET' }),
-    post: (url, data, options) => makeRequest(url, { 
-      ...options, 
-      method: 'POST', 
-      body: JSON.stringify(data) 
-    }),
-    put: (url, data, options) => makeRequest(url, { 
-      ...options, 
-      method: 'PUT', 
-      body: JSON.stringify(data) 
-    }),
-    delete: (url, options) => makeRequest(url, { ...options, method: 'DELETE' })
-  };
+    return {
+      makeRequest,
+      get: (url, options) => makeRequest(url, { ...options, method: 'GET' }),
+      post: (url, data, options) => makeRequest(url, { 
+        ...options, 
+        method: 'POST', 
+        body: JSON.stringify(data) 
+      }),
+      put: (url, data, options) => makeRequest(url, { 
+        ...options, 
+        method: 'PUT', 
+        body: JSON.stringify(data) 
+      }),
+      delete: (url, options) => makeRequest(url, { ...options, method: 'DELETE' })
+    };
+  }, [getToken, refreshToken, logout]);
 };
 
 const wso2AuthService = new WSO2AuthService();

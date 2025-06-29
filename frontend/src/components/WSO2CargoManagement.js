@@ -42,7 +42,7 @@ const WSO2CargoManagement = () => {
     } finally {
       setLoading(false);
     }
-  }, [cargoService, statusFilter, isAuthenticated]);
+  }, [statusFilter, isAuthenticated]);
 
   useEffect(() => {
     loadCargo();
@@ -50,7 +50,7 @@ const WSO2CargoManagement = () => {
 
   const handleCreateCargo = async (e) => {
     e.preventDefault();
-    if (!hasAuthority('WRITE')) {
+    if (!hasAuthority('WRITE_CARGO')) {
       setError('You do not have permission to create cargo entries');
       return;
     }
@@ -80,7 +80,7 @@ const WSO2CargoManagement = () => {
   };
 
   const handleStatusChange = async (cargoId, newStatus) => {
-    if (!hasAuthority('WRITE')) {
+    if (!hasAuthority('WRITE_CARGO')) {
       setError('You do not have permission to update cargo status');
       return;
     }
