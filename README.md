@@ -5,7 +5,7 @@ A comprehensive customs management application built with Spring Boot backend an
 ## 🏗️ Architecture
 
 ```
-customs-management-system/
+customs-react-spring-security/
 ├── backend/          # Spring Boot application
 ├── frontend/         # React application
 ├── docker/          # Docker configurations
