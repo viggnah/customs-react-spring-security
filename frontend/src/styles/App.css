@@ -2,7 +2,7 @@
 
 .App {
   min-height: 100vh;
-  background-color: var(--tra-white);
+  background-color: var(--customs-white);
 }
 
 /* Main Layout */
@@ -13,8 +13,8 @@
 
 .sidebar {
   width: 250px;
-  background-color: var(--tra-black);
-  color: var(--tra-white);
+  background-color: var(--customs-black);
+  color: var(--customs-white);
   flex-shrink: 0;
   transition: width 0.3s ease;
   position: relative;
@@ -44,12 +44,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, var(--tra-black) 0%, var(--tra-dark-gray) 100%);
+  background: linear-gradient(135deg, var(--customs-black) 0%, var(--customs-dark-gray) 100%);
   padding: var(--spacing-lg);
 }
 
 .auth-card {
-  background-color: var(--tra-white);
+  background-color: var(--customs-white);
   border-radius: var(--border-radius-lg);
   box-shadow: var(--shadow-lg);
   padding: var(--spacing-xxl);
@@ -63,13 +63,13 @@
 }
 
 .auth-logo h1 {
-  color: var(--tra-black);
+  color: var(--customs-black);
   font-size: var(--font-size-xl);
   margin-bottom: var(--spacing-sm);
 }
 
 .auth-logo .logo-text {
-  background: linear-gradient(45deg, var(--tra-yellow), var(--tra-dark-yellow));
+  background: linear-gradient(45deg, var(--customs-yellow), var(--customs-dark-yellow));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -77,7 +77,7 @@
 }
 
 .auth-logo p {
-  color: var(--tra-light-gray);
+  color: var(--customs-light-gray);
   font-size: var(--font-size-small);
   margin: 0;
 }
@@ -118,16 +118,16 @@
 .page-header {
   margin-bottom: var(--spacing-xl);
   padding-bottom: var(--spacing-lg);
-  border-bottom: 2px solid var(--tra-yellow);
+  border-bottom: 2px solid var(--customs-yellow);
 }
 
 .page-header h1 {
-  color: var(--tra-black);
+  color: var(--customs-black);
   margin-bottom: var(--spacing-sm);
 }
 
 .page-header p {
-  color: var(--tra-light-gray);
+  color: var(--customs-light-gray);
   margin: 0;
 }
 
@@ -144,7 +144,7 @@
 
 /* Data Tables */
 .data-table-container {
-  background-color: var(--tra-white);
+  background-color: var(--customs-white);
   border-radius: var(--border-radius-lg);
   box-shadow: var(--shadow-sm);
   overflow: hidden;
@@ -152,8 +152,8 @@
 
 .data-table-header {
   padding: var(--spacing-lg);
-  background-color: var(--tra-yellow);
-  color: var(--tra-black);
+  background-color: var(--customs-yellow);
+  color: var(--customs-black);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -178,7 +178,7 @@
 }
 
 .modal-content {
-  background-color: var(--tra-white);
+  background-color: var(--customs-white);
   border-radius: var(--border-radius-lg);
   box-shadow: var(--shadow-lg);
   max-width: 500px;
@@ -189,7 +189,7 @@
 
 .modal-header {
   padding: var(--spacing-lg);
-  border-bottom: 1px solid var(--tra-border-gray);
+  border-bottom: 1px solid var(--customs-border-gray);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -201,7 +201,7 @@
 
 .modal-footer {
   padding: var(--spacing-lg);
-  border-top: 1px solid var(--tra-border-gray);
+  border-top: 1px solid var(--customs-border-gray);
   display: flex;
   justify-content: flex-end;
   gap: var(--spacing-md);
@@ -216,7 +216,7 @@
 }
 
 .dashboard-card {
-  background-color: var(--tra-white);
+  background-color: var(--customs-white);
   border-radius: var(--border-radius-lg);
   box-shadow: var(--shadow-sm);
   padding: var(--spacing-lg);
@@ -231,32 +231,32 @@
 .dashboard-card-icon {
   width: 48px;
   height: 48px;
-  background-color: var(--tra-yellow);
+  background-color: var(--customs-yellow);
   border-radius: var(--border-radius-md);
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: var(--spacing-md);
   font-size: 24px;
-  color: var(--tra-black);
+  color: var(--customs-black);
 }
 
 .dashboard-card-title {
   font-size: var(--font-size-large);
   font-weight: 600;
   margin-bottom: var(--spacing-sm);
-  color: var(--tra-black);
+  color: var(--customs-black);
 }
 
 .dashboard-card-value {
   font-size: var(--font-size-xxl);
   font-weight: 700;
-  color: var(--tra-black);
+  color: var(--customs-black);
   margin-bottom: var(--spacing-xs);
 }
 
 .dashboard-card-description {
-  color: var(--tra-light-gray);
+  color: var(--customs-light-gray);
   font-size: var(--font-size-small);
 }
 

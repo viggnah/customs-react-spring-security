@@ -6,17 +6,17 @@ const Header = () => {
 
   return (
     <header style={{
-      backgroundColor: 'var(--tra-yellow)',
-      color: 'var(--tra-black)',
+      backgroundColor: 'var(--customs-yellow)',
+      color: 'var(--customs-black)',
       padding: 'var(--spacing-md) var(--spacing-lg)',
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
-      borderBottom: '2px solid var(--tra-black)'
+      borderBottom: '2px solid var(--customs-black)'
     }}>
       <div>
         <h2 style={{ margin: 0, fontSize: 'var(--font-size-large)' }}>
-          TRA Customs Management System
+          Customs Management System
         </h2>
       </div>
       

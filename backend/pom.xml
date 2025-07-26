@@ -12,11 +12,11 @@
         <relativePath/>
     </parent>
 
-    <groupId>com.tra</groupId>
+    <groupId>com.customs</groupId>
     <artifactId>customs-backend</artifactId>
     <version>1.0.0</version>
-    <name>TRA Customs Backend</name>
-    <description>Tax Revenue Authority Customs Management System Backend</description>
+    <name>Customs Management Backend</name>
+    <description>Customs Management System Backend</description>
 
     <properties>
         <java.version>17</java.version>

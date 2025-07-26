@@ -32,7 +32,7 @@ const Login = () => {
     <div className="login-container">
       <div className="login-card">
         <div className="login-header">
-          <h1>TRA Customs Management</h1>
+          <h1>Customs Management</h1>
           <p>Please sign in to your account</p>
         </div>
         
@@ -83,7 +83,7 @@ const Login = () => {
         <div className="demo-credentials">
           <h3>Demo Credentials:</h3>
           <div className="demo-user">
-            <strong>Admin:</strong> admin.tra / admin123
+            <strong>Admin:</strong> admin.customs / admin123
           </div>
           <div className="demo-user">
             <strong>Customs Officer:</strong> john.smith / customs123
