@@ -58,18 +58,18 @@ const Sidebar = () => {
     <div className="sidebar">
       <div style={{
         padding: 'var(--spacing-lg)',
-        borderBottom: '1px solid var(--tra-gray)',
+        borderBottom: '1px solid var(--customs-gray)',
         textAlign: 'center'
       }}>
         <h3 style={{
-          color: 'var(--tra-yellow)',
+          color: 'var(--customs-yellow)',
           margin: 0,
           fontSize: 'var(--font-size-large)'
         }}>
-          TRA
+          CUSTOMS
         </h3>
         <p style={{
-          color: 'var(--tra-white)',
+          color: 'var(--customs-white)',
           margin: '0.25rem 0 0 0',
           fontSize: 'var(--font-size-small)'
         }}>
@@ -89,15 +89,15 @@ const Sidebar = () => {
                 display: 'flex',
                 alignItems: 'center',
                 padding: 'var(--spacing-md) var(--spacing-lg)',
-                color: isActive(item.path) ? 'var(--tra-yellow)' : 'var(--tra-white)',
-                backgroundColor: isActive(item.path) ? 'var(--tra-gray)' : 'transparent',
+                color: isActive(item.path) ? 'var(--customs-yellow)' : 'var(--customs-white)',
+                backgroundColor: isActive(item.path) ? 'var(--customs-gray)' : 'transparent',
                 textDecoration: 'none',
                 transition: 'all 0.3s ease',
-                borderLeft: isActive(item.path) ? '4px solid var(--tra-yellow)' : '4px solid transparent'
+                borderLeft: isActive(item.path) ? '4px solid var(--customs-yellow)' : '4px solid transparent'
               }}
               onMouseEnter={(e) => {
                 if (!isActive(item.path)) {
-                  e.target.style.backgroundColor = 'var(--tra-dark-gray)';
+                  e.target.style.backgroundColor = 'var(--customs-dark-gray)';
                 }
               }}
               onMouseLeave={(e) => {
@@ -124,10 +124,10 @@ const Sidebar = () => {
         left: 'var(--spacing-lg)',
         right: 'var(--spacing-lg)',
         padding: 'var(--spacing-md)',
-        backgroundColor: 'var(--tra-gray)',
+        backgroundColor: 'var(--customs-gray)',
         borderRadius: 'var(--border-radius-md)',
         fontSize: 'var(--font-size-small)',
-        color: 'var(--tra-white)',
+        color: 'var(--customs-white)',
         boxSizing: 'border-box'
       }}>
         <div><strong>User:</strong> {user?.username}</div>

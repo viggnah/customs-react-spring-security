@@ -56,25 +56,6 @@ The application expects certain roles to be mapped from WSO2 IS groups. Configur
 
 Update your Spring Boot backend to validate WSO2 IS tokens instead of generating custom JWTs.
 
-#### Required Dependencies:
-```xml
-<dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
-</dependency>
-```
-
-#### Configuration Example:
-```yaml
-spring:
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          issuer-uri: https://your-wso2-is-domain.com/oauth2/token
-          jwk-set-uri: https://your-wso2-is-domain.com/oauth2/jwks
-```
-
 ## Architecture Changes
 
 ### Authentication Flow:
@@ -122,9 +103,6 @@ The integration maintains backward compatibility during transition:
 2. **Redirect URI Mismatch**: Verify callback URLs are exactly registered in WSO2 IS
 3. **Token Validation Errors**: Check that backend can reach WSO2 IS JWK endpoint
 4. **Role Mapping Issues**: Verify group/role claims are properly configured
-
-### Debug Mode:
-Set `REACT_APP_DEBUG_MODE=true` in `.env` to enable verbose logging.
 
 ## Security Considerations
 

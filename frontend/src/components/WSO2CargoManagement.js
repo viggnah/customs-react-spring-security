@@ -133,8 +133,8 @@ const WSO2CargoManagement = () => {
             onClick={() => setShowCreateModal(true)}
             style={{
               padding: 'var(--spacing-sm) var(--spacing-md)',
-              backgroundColor: 'var(--tra-blue)',
-              color: 'var(--tra-white)',
+              backgroundColor: 'var(--customs-blue)',
+              color: 'var(--customs-white)',
               border: 'none',
               borderRadius: 'var(--border-radius-sm)',
               cursor: 'pointer'
@@ -155,7 +155,7 @@ const WSO2CargoManagement = () => {
           style={{
             marginLeft: 'var(--spacing-sm)',
             padding: 'var(--spacing-xs)',
-            border: '1px solid var(--tra-gray)',
+            border: '1px solid var(--customs-gray)',
             borderRadius: 'var(--border-radius-sm)'
           }}
         >
@@ -192,13 +192,13 @@ const WSO2CargoManagement = () => {
       {/* Cargo List */}
       {!loading && cargoData.length > 0 && (
         <div style={{
-          backgroundColor: 'var(--tra-white)',
+          backgroundColor: 'var(--customs-white)',
           borderRadius: 'var(--border-radius-md)',
           boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
           overflow: 'hidden'
         }}>
           <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-            <thead style={{ backgroundColor: 'var(--tra-light-gray)' }}>
+            <thead style={{ backgroundColor: 'var(--customs-light-gray)' }}>
               <tr>
                 <th style={{ padding: 'var(--spacing-md)', textAlign: 'left' }}>Cargo ID</th>
                 <th style={{ padding: 'var(--spacing-md)', textAlign: 'left' }}>Description</th>
@@ -210,7 +210,7 @@ const WSO2CargoManagement = () => {
             </thead>
             <tbody>
               {cargoData.map((cargo) => (
-                <tr key={cargo.id} style={{ borderTop: '1px solid var(--tra-light-gray)' }}>
+                <tr key={cargo.id} style={{ borderTop: '1px solid var(--customs-light-gray)' }}>
                   <td style={{ padding: 'var(--spacing-md)' }}>{cargo.cargoId}</td>
                   <td style={{ padding: 'var(--spacing-md)' }}>{cargo.description}</td>
                   <td style={{ padding: 'var(--spacing-md)' }}>{cargo.origin}</td>
@@ -233,8 +233,8 @@ const WSO2CargoManagement = () => {
                         disabled={cargo.status === 'CLEARED'}
                         style={{
                           padding: 'var(--spacing-xs) var(--spacing-sm)',
-                          backgroundColor: 'var(--tra-yellow)',
-                          color: 'var(--tra-dark-blue)',
+                          backgroundColor: 'var(--customs-yellow)',
+                          color: 'var(--customs-dark-blue)',
                           border: 'none',
                           borderRadius: 'var(--border-radius-sm)',
                           cursor: cargo.status === 'CLEARED' ? 'not-allowed' : 'pointer',
@@ -273,11 +273,11 @@ const WSO2CargoManagement = () => {
         <div style={{
           textAlign: 'center',
           padding: 'var(--spacing-xxl)',
-          backgroundColor: 'var(--tra-white)',
+          backgroundColor: 'var(--customs-white)',
           borderRadius: 'var(--border-radius-md)',
           boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
         }}>
-          <p style={{ margin: 0, color: 'var(--tra-gray)' }}>
+          <p style={{ margin: 0, color: 'var(--customs-gray)' }}>
             No cargo entries found. {hasAuthority('CREATE_CARGO') && 'Create one to get started.'}
           </p>
         </div>
@@ -298,7 +298,7 @@ const WSO2CargoManagement = () => {
           zIndex: 1000
         }}>
           <div style={{
-            backgroundColor: 'var(--tra-white)',
+            backgroundColor: 'var(--customs-white)',
             padding: 'var(--spacing-lg)',
             borderRadius: 'var(--border-radius-md)',
             width: '90%',
@@ -318,7 +318,7 @@ const WSO2CargoManagement = () => {
                   style={{
                     width: '100%',
                     padding: 'var(--spacing-sm)',
-                    border: '1px solid var(--tra-gray)',
+                    border: '1px solid var(--customs-gray)',
                     borderRadius: 'var(--border-radius-sm)',
                     marginTop: 'var(--spacing-xs)'
                   }}
@@ -334,7 +334,7 @@ const WSO2CargoManagement = () => {
                   style={{
                     width: '100%',
                     padding: 'var(--spacing-sm)',
-                    border: '1px solid var(--tra-gray)',
+                    border: '1px solid var(--customs-gray)',
                     borderRadius: 'var(--border-radius-sm)',
                     marginTop: 'var(--spacing-xs)',
                     resize: 'vertical'
@@ -352,7 +352,7 @@ const WSO2CargoManagement = () => {
                     style={{
                       width: '100%',
                       padding: 'var(--spacing-sm)',
-                      border: '1px solid var(--tra-gray)',
+                      border: '1px solid var(--customs-gray)',
                       borderRadius: 'var(--border-radius-sm)',
                       marginTop: 'var(--spacing-xs)'
                     }}
@@ -368,7 +368,7 @@ const WSO2CargoManagement = () => {
                     style={{
                       width: '100%',
                       padding: 'var(--spacing-sm)',
-                      border: '1px solid var(--tra-gray)',
+                      border: '1px solid var(--customs-gray)',
                       borderRadius: 'var(--border-radius-sm)',
                       marginTop: 'var(--spacing-xs)'
                     }}
@@ -381,8 +381,8 @@ const WSO2CargoManagement = () => {
                   onClick={() => setShowCreateModal(false)}
                   style={{
                     padding: 'var(--spacing-sm) var(--spacing-md)',
-                    backgroundColor: 'var(--tra-gray)',
-                    color: 'var(--tra-white)',
+                    backgroundColor: 'var(--customs-gray)',
+                    color: 'var(--customs-white)',
                     border: 'none',
                     borderRadius: 'var(--border-radius-sm)',
                     cursor: 'pointer'
@@ -395,8 +395,8 @@ const WSO2CargoManagement = () => {
                   disabled={loading}
                   style={{
                     padding: 'var(--spacing-sm) var(--spacing-md)',
-                    backgroundColor: 'var(--tra-blue)',
-                    color: 'var(--tra-white)',
+                    backgroundColor: 'var(--customs-blue)',
+                    color: 'var(--customs-white)',
                     border: 'none',
                     borderRadius: 'var(--border-radius-sm)',
                     cursor: loading ? 'not-allowed' : 'pointer',

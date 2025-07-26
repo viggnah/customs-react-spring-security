@@ -32,7 +32,7 @@ const authConfig = {
   // Session management
 //   checkSessionInterval: 3000,
   
-  // Custom claims mapping for TRA roles
+  // Custom claims mapping for Customs roles
 //   customClaimsMapping: {
 //     roles: "groups", // Map WSO2 IS groups to roles
 //     authorities: "roles" // Map WSO2 IS roles to authorities

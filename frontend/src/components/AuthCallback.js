@@ -25,10 +25,10 @@ const AuthCallback = () => {
         justifyContent: 'center',
         alignItems: 'center',
         height: '100vh',
-        backgroundColor: 'var(--tra-blue)'
+        backgroundColor: 'var(--customs-blue)'
       }}>
         <div style={{
-          color: 'var(--tra-white)',
+          color: 'var(--customs-white)',
           fontSize: 'var(--font-size-large)',
           textAlign: 'center'
         }}>

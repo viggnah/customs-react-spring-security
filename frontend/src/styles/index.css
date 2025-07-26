@@ -1,15 +1,15 @@
-/* TRA Customs Management System Global Styles */
+/* Customs Management System Global Styles */
 
 :root {
-  /* TRA Brand Colors */
-  --tra-yellow: #FFD700;
-  --tra-dark-yellow: #E6C200;
-  --tra-black: #000000;
-  --tra-dark-gray: #1a1a1a;
-  --tra-gray: #333333;
-  --tra-light-gray: #666666;
-  --tra-border-gray: #cccccc;
-  --tra-white: #ffffff;
+  /* Customs Brand Colors */
+  --customs-yellow: #FFD700;
+  --customs-dark-yellow: #E6C200;
+  --customs-black: #000000;
+  --customs-dark-gray: #1a1a1a;
+  --customs-gray: #333333;
+  --customs-light-gray: #666666;
+  --customs-border-gray: #cccccc;
+  --customs-white: #ffffff;
   
   /* Status Colors */
   --success-color: #28a745;
@@ -55,8 +55,8 @@ html, body {
   font-family: var(--font-family);
   font-size: var(--font-size-base);
   line-height: 1.6;
-  color: var(--tra-black);
-  background-color: var(--tra-white);
+  color: var(--customs-black);
+  background-color: var(--customs-white);
 }
 
 #root {
@@ -94,13 +94,13 @@ p {
 
 /* Links */
 a {
-  color: var(--tra-black);
+  color: var(--customs-black);
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 a:hover {
-  color: var(--tra-dark-yellow);
+  color: var(--customs-dark-yellow);
 }
 
 /* Buttons */
@@ -119,32 +119,32 @@ a:hover {
 }
 
 .btn-primary {
-  background-color: var(--tra-yellow);
-  color: var(--tra-black);
-  border: 2px solid var(--tra-yellow);
+  background-color: var(--customs-yellow);
+  color: var(--customs-black);
+  border: 2px solid var(--customs-yellow);
 }
 
 .btn-primary:hover {
-  background-color: var(--tra-dark-yellow);
-  border-color: var(--tra-dark-yellow);
+  background-color: var(--customs-dark-yellow);
+  border-color: var(--customs-dark-yellow);
   transform: translateY(-1px);
   box-shadow: var(--shadow-md);
 }
 
 .btn-secondary {
   background-color: transparent;
-  color: var(--tra-black);
-  border: 2px solid var(--tra-black);
+  color: var(--customs-black);
+  border: 2px solid var(--customs-black);
 }
 
 .btn-secondary:hover {
-  background-color: var(--tra-black);
-  color: var(--tra-yellow);
+  background-color: var(--customs-black);
+  color: var(--customs-yellow);
 }
 
 .btn-danger {
   background-color: var(--danger-color);
-  color: var(--tra-white);
+  color: var(--customs-white);
   border: 2px solid var(--danger-color);
 }
 
@@ -155,7 +155,7 @@ a:hover {
 
 .btn-success {
   background-color: var(--success-color);
-  color: var(--tra-white);
+  color: var(--customs-white);
   border: 2px solid var(--success-color);
 }
 
@@ -179,13 +179,13 @@ a:hover {
   display: block;
   margin-bottom: var(--spacing-xs);
   font-weight: 500;
-  color: var(--tra-black);
+  color: var(--customs-black);
 }
 
 .form-control {
   width: 100%;
   padding: var(--spacing-sm) var(--spacing-md);
-  border: 2px solid var(--tra-border-gray);
+  border: 2px solid var(--customs-border-gray);
   border-radius: var(--border-radius-md);
   font-size: var(--font-size-base);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
@@ -193,7 +193,7 @@ a:hover {
 
 .form-control:focus {
   outline: none;
-  border-color: var(--tra-yellow);
+  border-color: var(--customs-yellow);
   box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
 }
 
@@ -209,7 +209,7 @@ a:hover {
 
 /* Cards */
 .card {
-  background-color: var(--tra-white);
+  background-color: var(--customs-white);
   border-radius: var(--border-radius-lg);
   box-shadow: var(--shadow-sm);
   overflow: hidden;
@@ -222,10 +222,10 @@ a:hover {
 
 .card-header {
   padding: var(--spacing-lg);
-  background-color: var(--tra-yellow);
-  color: var(--tra-black);
+  background-color: var(--customs-yellow);
+  color: var(--customs-black);
   font-weight: 600;
-  border-bottom: 1px solid var(--tra-border-gray);
+  border-bottom: 1px solid var(--customs-border-gray);
 }
 
 .card-body {
@@ -243,12 +243,12 @@ a:hover {
 .table td {
   padding: var(--spacing-md);
   text-align: left;
-  border-bottom: 1px solid var(--tra-border-gray);
+  border-bottom: 1px solid var(--customs-border-gray);
 }
 
 .table th {
-  background-color: var(--tra-yellow);
-  color: var(--tra-black);
+  background-color: var(--customs-yellow);
+  color: var(--customs-black);
   font-weight: 600;
 }
 
@@ -311,7 +311,7 @@ a:hover {
 .text-left { text-align: left; }
 .text-right { text-align: right; }
 
-.text-primary { color: var(--tra-yellow); }
+.text-primary { color: var(--customs-yellow); }
 .text-danger { color: var(--danger-color); }
 .text-success { color: var(--success-color); }
 .text-warning { color: var(--warning-color); }
@@ -331,28 +331,28 @@ a:hover {
 
 .status-success {
   background-color: var(--success-color);
-  color: var(--tra-white);
+  color: var(--customs-white);
 }
 
 .status-warning {
   background-color: var(--warning-color);
-  color: var(--tra-black);
+  color: var(--customs-black);
 }
 
 .status-danger {
   background-color: var(--danger-color);
-  color: var(--tra-white);
+  color: var(--customs-white);
 }
 
 .status-info {
   background-color: var(--info-color);
-  color: var(--tra-white);
+  color: var(--customs-white);
 }
 
 /* Loading Spinner */
 .spinner {
   border: 3px solid rgba(255, 215, 0, 0.3);
-  border-top: 3px solid var(--tra-yellow);
+  border-top: 3px solid var(--customs-yellow);
   border-radius: 50%;
   width: 40px;
   height: 40px;

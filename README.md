@@ -1,11 +1,11 @@
-# TRA Customs Management System
+# Customs Management System
 
-A comprehensive customs management application built with Spring Boot backend and React frontend for tax authority operations.
+A comprehensive customs management application built with Spring Boot backend and React frontend for customs authority operations.
 
 ## 🏗️ Architecture
 
 ```
-tra-customs-spring/
+customs-management-system/
 ├── backend/          # Spring Boot application
 ├── frontend/         # React application
 ├── docker/          # Docker configurations
@@ -74,7 +74,7 @@ npm start
 
 | Username | Password | Role | Access Level |
 |----------|----------|------|--------------|
-| admin.tra | admin123 | ADMIN | Full access |
+| admin.customs | admin123 | ADMIN | Full access |
 | john.smith | customs123 | CUSTOMS_OFFICER | General operations |
 | jane.doe | cargo123 | CARGO_INSPECTOR | Cargo operations |
 | mike.wilson | vehicle123 | VEHICLE_INSPECTOR | Vehicle operations |
@@ -101,7 +101,7 @@ docker-compose up --build
 
 ### Backend Structure
 ```
-backend/src/main/java/com/tra/customs/
+backend/src/main/java/com/customs/management/
 ├── config/          # Configuration classes
 ├── controller/      # REST controllers
 ├── dto/             # Data Transfer Objects

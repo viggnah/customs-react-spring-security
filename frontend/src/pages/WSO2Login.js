@@ -36,10 +36,10 @@ const WSO2Login = () => {
         justifyContent: 'center',
         alignItems: 'center',
         height: '100vh',
-        background: 'linear-gradient(135deg, var(--tra-black) 0%, var(--tra-dark-gray) 25%, #1a1a2e 50%, #16213e 75%, #0f3460 100%)'
+        background: 'linear-gradient(135deg, var(--customs-black) 0%, var(--customs-dark-gray) 25%, #1a1a2e 50%, #16213e 75%, #0f3460 100%)'
       }}>
         <div style={{
-          color: 'var(--tra-white)',
+          color: 'var(--customs-white)',
           fontSize: 'var(--font-size-large)',
           textAlign: 'center'
         }}>
@@ -62,7 +62,7 @@ const WSO2Login = () => {
       justifyContent: 'center',
       alignItems: 'center',
       height: '100vh',
-      background: 'linear-gradient(135deg, var(--tra-black) 0%, var(--tra-dark-gray) 25%, #1a1a2e 50%, #16213e 75%, #0f3460 100%)',
+      background: 'linear-gradient(135deg, var(--customs-black) 0%, var(--customs-dark-gray) 25%, #1a1a2e 50%, #16213e 75%, #0f3460 100%)',
       position: 'relative',
       overflow: 'hidden'
     }}>
@@ -91,12 +91,12 @@ const WSO2Login = () => {
         position: 'relative',
         zIndex: 1
       }}>
-        {/* TRA Logo and Title */}
+        {/* Customs Logo and Title */}
         <div style={{ marginBottom: '2.5rem' }}>
           <div style={{
             width: '80px',
             height: '80px',
-            background: 'linear-gradient(135deg, var(--tra-yellow) 0%, var(--tra-dark-yellow) 100%)',
+            background: 'linear-gradient(135deg, var(--customs-yellow) 0%, var(--customs-dark-yellow) 100%)',
             borderRadius: '50%',
             display: 'flex',
             alignItems: 'center',
@@ -106,14 +106,14 @@ const WSO2Login = () => {
             border: '3px solid rgba(255, 215, 0, 0.2)'
           }}>
             <span style={{
-              color: 'var(--tra-black)',
+              color: 'var(--customs-black)',
               fontSize: '2rem',
               fontWeight: 'bold'
             }}>🏛️</span>
           </div>
           
           <h1 style={{
-            color: 'var(--tra-black)',
+            color: 'var(--customs-black)',
             fontSize: '2.8rem',
             fontWeight: '800',
             margin: 0,
@@ -122,10 +122,10 @@ const WSO2Login = () => {
             textShadow: '0 2px 4px rgba(255, 215, 0, 0.5)',
             position: 'relative'
           }}>
-            TRA
+            CUSTOMS
           </h1>
           <h2 style={{
-            color: 'var(--tra-gray)',
+            color: 'var(--customs-gray)',
             fontSize: '1.25rem',
             fontWeight: '600',
             margin: 0,
@@ -134,7 +134,7 @@ const WSO2Login = () => {
             Customs Management System
           </h2>
           <p style={{
-            color: 'var(--tra-light-gray)',
+            color: 'var(--customs-light-gray)',
             fontSize: '0.95rem',
             margin: 0,
             fontWeight: '500'
@@ -150,7 +150,7 @@ const WSO2Login = () => {
             padding: '1.5rem',
             borderRadius: '12px',
             marginBottom: '2rem',
-            border: '1px solid var(--tra-border-gray)',
+            border: '1px solid var(--customs-border-gray)',
             boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)'
           }}>
             <div style={{
@@ -167,7 +167,7 @@ const WSO2Login = () => {
             </div>
             <p style={{
               margin: 0,
-              color: 'var(--tra-gray)',
+              color: 'var(--customs-gray)',
               fontSize: '0.95rem',
               lineHeight: '1.6',
               fontWeight: '500'
@@ -183,9 +183,9 @@ const WSO2Login = () => {
               width: '100%',
               padding: '1rem 1.5rem',
               background: isLoggingIn 
-                ? 'linear-gradient(135deg, var(--tra-light-gray) 0%, var(--tra-gray) 100%)'
-                : 'linear-gradient(135deg, var(--tra-yellow) 0%, var(--tra-dark-yellow) 100%)',
-              color: isLoggingIn ? 'var(--tra-white)' : 'var(--tra-black)',
+                ? 'linear-gradient(135deg, var(--customs-light-gray) 0%, var(--customs-gray) 100%)'
+                : 'linear-gradient(135deg, var(--customs-yellow) 0%, var(--customs-dark-yellow) 100%)',
+              color: isLoggingIn ? 'var(--customs-white)' : 'var(--customs-black)',
               border: 'none',
               borderRadius: '12px',
               fontSize: '1.1rem',
@@ -207,14 +207,14 @@ const WSO2Login = () => {
               if (!isLoggingIn) {
                 e.target.style.transform = 'translateY(-2px)';
                 e.target.style.boxShadow = '0 12px 35px rgba(255, 215, 0, 0.6)';
-                e.target.style.background = 'linear-gradient(135deg, var(--tra-dark-yellow) 0%, #ccac00 100%)';
+                e.target.style.background = 'linear-gradient(135deg, var(--customs-dark-yellow) 0%, #ccac00 100%)';
               }
             }}
             onMouseLeave={(e) => {
               if (!isLoggingIn) {
                 e.target.style.transform = 'translateY(0)';
                 e.target.style.boxShadow = '0 8px 25px rgba(255, 215, 0, 0.4)';
-                e.target.style.background = 'linear-gradient(135deg, var(--tra-yellow) 0%, var(--tra-dark-yellow) 100%)';
+                e.target.style.background = 'linear-gradient(135deg, var(--customs-yellow) 0%, var(--customs-dark-yellow) 100%)';
               }
             }}
           >
@@ -224,7 +224,7 @@ const WSO2Login = () => {
                   width: '20px',
                   height: '20px',
                   border: '2px solid rgba(0,0,0,0.3)',
-                  borderTop: '2px solid var(--tra-black)',
+                  borderTop: '2px solid var(--customs-black)',
                   borderRadius: '50%',
                   animation: 'spin 1s linear infinite'
                 }}></div>
@@ -260,21 +260,21 @@ const WSO2Login = () => {
 
         {/* Footer */}
         <div style={{
-          borderTop: '1px solid var(--tra-border-gray)',
+          borderTop: '1px solid var(--customs-border-gray)',
           paddingTop: '1.5rem',
           marginTop: '2rem'
         }}>
           <p style={{
             margin: 0,
-            color: 'var(--tra-gray)',
+            color: 'var(--customs-gray)',
             fontSize: '1rem',
             fontWeight: '600'
           }}>
-            Tanzania Revenue Authority
+            Customs Authority
           </p>
           <p style={{
             margin: 0,
-            color: 'var(--tra-light-gray)',
+            color: 'var(--customs-light-gray)',
             fontSize: '0.85rem',
             marginTop: '0.5rem',
             fontWeight: '500'

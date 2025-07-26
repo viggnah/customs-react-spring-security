@@ -1,7 +1,7 @@
 {
-  "name": "tra-customs-frontend",
+  "name": "customs-management-frontend",
   "version": "1.0.0",
-  "description": "TRA Customs Management System Frontend",
+  "description": "Customs Management System Frontend",
   "private": true,
   "dependencies": {
     "@asgardeo/auth-react": "^5.4.0",

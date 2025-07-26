@@ -11,7 +11,7 @@
 
 #### Core Authentication Files & Complexity:
 ```
-backend/src/main/java/com/tra/customs/
+backend/src/main/java/com/customs/management/
 ├── security/
 │   ├── AuthEntryPointJwt.java        (35 lines)
 │   ├── AuthTokenFilter.java          (60 lines) 
@@ -42,7 +42,7 @@ TOTAL: 493 lines of authentication code
 
 #### Simplified Authentication Files:
 ```
-backend/src/main/java/com/tra/customs/config/
+backend/src/main/java/com/customs/management/config/
 ├── WSO2SecurityConfig.java           (311 lines) *
 └── CustomAtJwtDecoder.java           (143 lines) *
 

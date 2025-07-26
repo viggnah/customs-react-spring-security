@@ -36,9 +36,9 @@ const LoginPage = () => {
       <div className="auth-card">
         <div className="auth-logo">
           <h1>
-            <span className="logo-text">TRA</span> Customs
+            <span className="logo-text">CUSTOMS</span> Authority
           </h1>
-          <p>Tax Revenue Authority</p>
+          <p>Customs Management System</p>
         </div>
 
         {error && (
@@ -99,7 +99,7 @@ const LoginPage = () => {
         <div className="mt-4">
           <h4>Demo Users:</h4>
           <ul style={{ fontSize: '0.875rem', color: '#666' }}>
-            <li><strong>admin.tra</strong> / admin123 (Admin)</li>
+            <li><strong>admin.customs</strong> / admin123 (Admin)</li>
             <li><strong>john.smith</strong> / customs123 (Customs Officer)</li>
             <li><strong>jane.doe</strong> / cargo123 (Cargo Inspector)</li>
             <li><strong>mike.wilson</strong> / vehicle123 (Vehicle Inspector)</li>

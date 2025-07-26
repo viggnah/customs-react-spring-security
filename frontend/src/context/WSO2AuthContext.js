@@ -47,7 +47,7 @@ const AuthProviderWrapper = ({ children }) => {
           console.log('Basic user info:', basicUserInfo);
           console.log('Decoded token:', decodedToken);
           
-          // Map WSO2 IS user data to TRA user format
+          // Map WSO2 IS user data to Customs user format
           const userData = {
             username: basicUserInfo.username || basicUserInfo.preferred_username,
             email: basicUserInfo.email,
@@ -81,7 +81,7 @@ const AuthProviderWrapper = ({ children }) => {
     }
   }, [asgardeoIsAuthenticated, isLoading, getBasicUserInfo, getDecodedIDToken]);
 
-  // Map WSO2 IS groups to TRA roles
+  // Map WSO2 IS groups to Customs roles
   const mapGroupsToRoles = (groups) => {
     console.log('Mapping groups to roles:', groups);
     const roleMapping = {

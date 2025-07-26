@@ -73,24 +73,37 @@ mvn spring-boot:run
 
 ### WSO2 IS Setup Requirements
 
-1. **OAuth2 Application in WSO2 IS**:
-   - Application Type: Single Page Application (SPA)
-   - Grant Types: Authorization Code with PKCE
+1. **Standard-Based Application in WSO2 IS**:
+   - Application Type: Standard-Based Application
+   - Template: OpenID Connect
+   - Protocol Configuration: Set up in the Protocol tab as shown in the screenshots
+   - Redirect URIs: `http://localhost:3000/auth/callback`, `http://localhost:3000/login`
    - Allowed Origins: `http://localhost:3000`, `http://localhost:8080`
 
-2. **Required Scopes**:
+2. **Protocol Tab Configuration**:
+   - Access Token: JWT format
+   - Token Type: JWT  
+   - Access Token Attributes: Include `groups` and `roles` claims
+   - Authorized redirect URLs: Configure callback URLs for your application
+
+3. **Application Branding**:
+   - Navigate to the Branding section in WSO2 IS
+   - Select your created application name
+   - Customize the login page branding as needed
+
+4. **Required Scopes**:
    - `openid`
    - `profile`
    - `email`
 
-3. **User Groups** (configure in WSO2 IS):
+5. **User Groups** (configure in WSO2 IS):
    - `admin`
    - `customs_officer`
    - `cargo_inspector`
    - `vehicle_inspector`
    - `duty_officer`
 
-4. **Claims Configuration**:
+6. **Claims Configuration**:
    - Ensure `groups` claim is included in ID and Access tokens
    - Configure user attributes: `given_name`, `family_name`, `email`
 

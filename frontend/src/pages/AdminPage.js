@@ -5,8 +5,8 @@ const AdminPage = () => {
   const users = [
     {
       id: 1,
-      username: 'admin.tra',
-      email: 'admin@tra.gov',
+      username: 'admin.customs',
+      email: 'admin@customs.gov',
       role: 'ADMIN',
       status: 'Active',
       lastLogin: '2024-01-16 09:30'
@@ -14,7 +14,7 @@ const AdminPage = () => {
     {
       id: 2,
       username: 'john.smith',
-      email: 'john.smith@tra.gov',
+      email: 'john.smith@customs.gov',
       role: 'CUSTOMS_OFFICER',
       status: 'Active',
       lastLogin: '2024-01-16 08:45'
@@ -22,7 +22,7 @@ const AdminPage = () => {
     {
       id: 3,
       username: 'jane.doe',
-      email: 'jane.doe@tra.gov',
+      email: 'jane.doe@customs.gov',
       role: 'CARGO_INSPECTOR',
       status: 'Active',
       lastLogin: '2024-01-15 16:20'
@@ -30,7 +30,7 @@ const AdminPage = () => {
     {
       id: 4,
       username: 'mike.wilson',
-      email: 'mike.wilson@tra.gov',
+      email: 'mike.wilson@customs.gov',
       role: 'VEHICLE_INSPECTOR',
       status: 'Inactive',
       lastLogin: '2024-01-12 14:15'
