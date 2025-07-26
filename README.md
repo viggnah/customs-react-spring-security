@@ -3,14 +3,6 @@
 A comprehensive customs management application built with Spring Boot backend and React frontend for customs authority operations.
 
 ## 🏗️ Architecture
-
-```
-customs-management-system/stoms Management System
-
-A comprehensive customs management application built with Spring Boot backend and React frontend for tax authority operations.
-
-## 🏗️ Architecture
-
 ```
 customs-react-spring-security/
 ├── backend/          # Spring Boot application
