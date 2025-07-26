@@ -51,26 +51,60 @@ customs-react-spring-security/
 
 ## 🚀 Quick Start
 
-### Prerequisites
+This application supports two authentication modes:
+
+### Default Setup (Spring Security)
+The main branch uses built-in Spring Security authentication with default users.
+
+#### Prerequisites
 - Java 17+
 - Node.js 16+
 - Maven 3.6+
 
-### Backend Setup
+#### Backend Setup
 ```bash
 cd backend
 mvn clean install
 mvn spring-boot:run
 ```
 
-### Frontend Setup
+#### Frontend Setup
 ```bash
 cd frontend
 npm install
 npm start
 ```
 
-## 📊 Default Users
+### WSO2 Identity Server Integration
+For enterprise identity management, switch to the WSO2 IS integration branch.
+
+#### Prerequisites
+- All default prerequisites above
+- WSO2 Identity Server 7.1.0
+
+#### Setup Steps
+1. Switch to the feature branch:
+   ```bash
+   git checkout feature/wso2-identity-server-integration
+   ```
+
+2. Start WSO2 Identity Server and configure according to `BACKEND_WSO2_INTEGRATION.md`
+
+3. Run backend with WSO2 profile:
+   ```bash
+   cd backend
+   mvn clean install
+   mvn spring-boot:run -Dspring-boot.run.profiles=wso2
+   ```
+
+4. Run frontend:
+   ```bash
+   cd frontend
+   npm install
+   npm start
+   ```
+
+## 📊 Default Users (Spring Security setup)
 
 | Username | Password | Role | Access Level |
 |----------|----------|------|--------------|
