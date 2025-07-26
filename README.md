@@ -113,13 +113,6 @@ For enterprise identity management, switch to the WSO2 IS integration branch.
 | jane.doe | cargo123 | CARGO_INSPECTOR | Cargo operations |
 | mike.wilson | vehicle123 | VEHICLE_INSPECTOR | Vehicle operations |
 
-## 🔧 Configuration
-
-The application supports multiple environments through Spring profiles:
-- `dev` - Development with H2 database
-- `staging` - Staging environment
-- `prod` - Production with PostgreSQL
-
 ## 📝 API Documentation
 
 API documentation is available at: `http://localhost:8080/swagger-ui.html`
