@@ -2,6 +2,8 @@
 
 A comprehensive customs management application built with Spring Boot backend and React frontend for customs authority operations.
 
+> **⚠️ PROTOTYPE NOTICE**: This is a demonstration application focused on authentication architecture patterns. Some frontend functionality remains unimplemented (email services, complete CRUD operations, etc.). The primary purpose is to showcase modern authentication approaches and WSO2 Identity Server integration patterns.
+
 ## 🏗️ Architecture
 
 ```
