@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TraCustomsApplication {
+public class CustomsManagementApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(TraCustomsApplication.class, args);
+        SpringApplication.run(CustomsManagementApplication.class, args);
     }
 
 }
