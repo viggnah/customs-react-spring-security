@@ -103,7 +103,7 @@ For enterprise identity management, switch to the WSO2 IS integration branch.
    npm start
    ```
 
-## 📊 Default Users
+## 📊 Default Users (Spring Security setup)
 
 | Username | Password | Role | Access Level |
 |----------|----------|------|--------------|
